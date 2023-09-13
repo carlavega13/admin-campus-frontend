@@ -1,0 +1,10 @@
+.box{
+    display: flex;
+    flex-direction: column;
+    height: 40vh;
+    width: fit-content;
+    background-color: aqua;
+    justify-content: space-evenly;
+    align-items: center;
+    padding: 2em;
+}

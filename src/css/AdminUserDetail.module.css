@@ -1,0 +1,23 @@
+.box{
+    background-color: rgb(9, 255, 0);
+    display: flex;
+    flex-direction: column;
+    width: 80vw;
+
+}
+.cell{
+    /* background-color: blue; */
+    display: flex;
+    justify-content: space-between;
+
+
+}
+.names{
+display: flex;
+justify-content:start;
+/* justify-content: space-around; */
+}
+.name{
+    margin-left: 10%;
+    margin-right: 12%;
+}

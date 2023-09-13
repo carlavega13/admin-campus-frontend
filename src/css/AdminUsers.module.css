@@ -1,0 +1,25 @@
+.box{
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1em;
+}
+.cell{
+    display: flex;
+    justify-content: space-around;
+background-color: rgba(233, 156, 79, 0.431);
+
+}
+.info{
+    border: 1px solid salmon;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+.names{
+    display: flex;
+    justify-content: space-around;
+}
+.blur{
+    color: transparent; /* Hace que el texto sea transparente */
+    text-shadow: 0 0 5px rgba(0, 0, 0, 0.752); 
+}

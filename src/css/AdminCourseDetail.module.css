@@ -1,0 +1,26 @@
+.box{
+display: flex;
+flex-direction: column;
+
+}
+.cell{
+    display: flex;
+    flex-direction: row;
+    justify-content:space-around;
+
+}
+.name{
+    border: 1px solid rgb(135, 236, 135);
+    background-color: rgba(145, 131, 245, 0.581);
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+.names{
+    display: flex;
+    justify-content: space-around;
+}
+.blur{
+    color: transparent; /* Hace que el texto sea transparente */
+    text-shadow: 0 0 5px rgba(0, 0, 0, 0.752); 
+}

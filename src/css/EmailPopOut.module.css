@@ -1,0 +1,15 @@
+.box{
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    bottom: 10em;
+    right: 22.5em;
+    height: 50vh;
+    width: 50%;
+background-color: brown;
+
+}
+textarea {
+    resize: none;
+    height: 100%;
+  }

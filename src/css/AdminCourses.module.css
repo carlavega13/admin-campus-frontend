@@ -1,0 +1,36 @@
+.row{
+    display: flex;
+ justify-content: space-around;    
+ /* background-color: brown; */
+ padding: 1em;
+ border: 1px solid black;
+ 
+}
+.name{
+    cursor: pointer;
+
+}
+.box{
+    background-color: aqua;
+    width: 70%;
+
+
+}
+.fondo{
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.names{
+    display: flex;
+    justify-content: space-evenly;
+
+    width: 100%;
+}
+.blur{
+    color: transparent; /* Hace que el texto sea transparente */
+    text-shadow: 0 0 5px rgba(0, 0, 0, 0.752); 
+}
