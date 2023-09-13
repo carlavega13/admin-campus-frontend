@@ -1,10 +1,95 @@
-.box{
+.containerLogin {
+    background-color: #fff;
+    width: 22rem;
+    height: 100%;
+    max-height: 30rem;
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
-    background-color: rgb(147, 235, 197);
-    justify-content: space-evenly;
-    height:  30vh;
+    justify-content: flex-start;
+    padding-top: 1rem;
+    box-shadow: 2px 2px .3rem .1rem rgb(0, 0, 0, 0.35);
+    border-radius: 1rem;
+}
+.icons {
+    width: 100%;
+    display: flex;
+    height: 14rem;
+    justify-content: center;
+}
+.robotStandar {
+    width: 8rem;
+    height: 11.5rem;
+    align-self: flex-end;
+}
+.msgIcon {
+    width: 8rem;
+    height: 6rem;
+}
+.inputs {
+    margin-top: 2rem;
+    display: flex;
+    flex-direction: column;
+    height: 12rem;
+    width: 90%;
+    justify-content: space-between;
+}
+.inputs input {
+    border-radius: 6px 6px 0 0;
+    height: 2rem;
+    letter-spacing: 1px;
+    padding-left: .5rem;
+    border: none;
+    border-bottom: 2px solid #1B8FD8;
+    outline: none;
+}
+.inputs label {
+    font-weight: bold;
+    letter-spacing: 1px;
+    font-size: .8rem;
+    width: fit-content;
+    padding: 0px 8px 0px 8px;
+    position: relative;
+    top: .7rem;
+    color: #1B8FD8
+}
+.btnLogin {
+    background: #EEB141;
+    height: 2rem;
+    border-radius: 12px;
+    border: none;
+    font-weight: bold;
+    font-family: Roboto;
+    font-size: 1rem;
+    color: #fff;
+    letter-spacing: .1rem;
+    transition: .3s;
+    width: 100%;
+    max-width: 16rem;
+    align-self: center;
+}
+.btnLogin:hover {
+    background: #F3CD87;
+    cursor: pointer
+}
 
+@media (max-width: 960px) {
+    .containerLogin {
+        width: 100%;
+    }
+}
+
+@media (max-width: 500px) {
+    .robotStandar {
+        width: 5rem;
+        height: 7rem;
+    }
+    .msgIcon {
+        display: none;
+    }
+    .icons { 
+        height: 7rem;
+        justify-content: center !important;
+        align-items: center !important;
+    }
 }

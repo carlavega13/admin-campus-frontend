@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from "react-redux"
-import { useParams } from "react-router-dom"
+import { useNavigate, useParams } from "react-router-dom"
 import s from "../../../css/AdminCourseDetail.module.css"
 import Papa from 'papaparse';
 import downloadCsv from "../../../downloadCsv";
@@ -11,6 +11,7 @@ import EmailPopOut from "../../EmailPopOut";
 import { getGrades } from "../../../Redux/actions";
 
 const AdminCourseDetail=()=>{
+    const navigate =useNavigate()
     const[flag,setFlag]=useState({
         state:false,
         to:""
@@ -26,7 +27,10 @@ const AdminCourseDetail=()=>{
    if(!course.enrolledPeople.find((pe)=>pe.grades)){
     dispatch(getGrades(course.enrolledPeople,user.token,user.domain,id))
     return(
-        <>LOADING!!!!!!</>
+        <>
+        <button onClick={()=>navigate("/adminHome")}>HOME</button>
+        LOADING!!!!!!
+        </>
     )
     
        }
@@ -85,6 +89,8 @@ const handleEnvolope=(to)=>{
 
 return(
     <div className={s.box}>
+        <button onClick={()=>navigate("/adminHome/courses")}>Atras</button>
+        <button onClick={()=>navigate("/adminHome")}>HOME</button>
           <div className={s.names}>
         <h4 className={flag?.state?s.blur:s.normal}>Nombres</h4>
         <h4 className={flag?.state?s.blur:s.normal}>Email</h4>
@@ -93,7 +99,12 @@ return(
         <h4 className={flag?.state?s.blur:s.normal}>Porcentaje de finalizacion</h4>
         </div>
     {sliceUsers?.map(student=>{
-       let progress= student?.enrolledcourses?.find(co=>co.id==id).progress
+        let progress=0
+        if(student.enrolledcourses.progress){
+
+    
+            progress= student?.enrolledcourses?.find(co=>co.id==id).progress
+        }
         return (
             <div className={s.cell}>
                 <div className={s.name}>{student.fullname}</div>

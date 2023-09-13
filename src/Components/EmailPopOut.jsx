@@ -9,7 +9,7 @@ const[info,setInfo]=useState({
     subject:"",
     text:""
 })
-console.log(props);
+
 const handleSendEmail=async()=>{
    let confirm=window.confirm('¿Estás seguro de que deseas enviar este email?');
    if(confirm){

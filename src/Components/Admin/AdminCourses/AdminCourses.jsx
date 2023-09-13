@@ -54,6 +54,7 @@ const AdminCourses=()=>{
                 
 return(
     <div className={s.fondo}>
+        <button onClick={()=>navigate("/adminHome")}>HOME</button>
                   <div className={s.names}>
         <h4 className={flag?.state?s.blur:s.normal}>Curso</h4>
         <h4 className={flag?.state?s.blur:s.normal}>Cantidad de alumnos</h4>

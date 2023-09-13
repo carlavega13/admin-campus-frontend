@@ -1,6 +1,5 @@
 import { useState } from 'react'
 import { Route, Routes } from 'react-router-dom'
-import Login from './Components/Login/Login'
 import AdminHome from './Components/Admin/AdminHome/AdminHome'
 import AdminCourses from './Components/Admin/AdminCourses/AdminCourses'
 import FirstLoginEditProfile from './Components/FirstLoginEditProfile/FirstLoginEditProfile'
@@ -8,6 +7,7 @@ import s from "./App.module.css"
 import AdminCourseDetail from './Components/Admin/AdminCourses/AdminCourseDetail'
 import AdminUsers from './Components/Admin/AdminUsers/AdminUsers'
 import AdminUserDetail from './Components/Admin/AdminUsers/AdminUserDetail'
+import LoginPage from './Components/Login/LoginPage'
 
 function App() {
 
@@ -15,7 +15,7 @@ function App() {
   return (
     <div className={s.box}>
     <Routes>
-   <Route path="/" element={<Login />}/>
+   <Route path="/" element={<LoginPage />}/>
    <Route path="/adminHome" element={<AdminHome />}/>
    <Route path="/adminhome/courses" element={<AdminCourses />}/>
    <Route path="/firstEditProfile" element={<FirstLoginEditProfile />}/>

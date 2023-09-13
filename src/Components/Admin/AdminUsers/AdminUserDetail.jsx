@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux"
-import { useParams } from "react-router-dom"
+import { useNavigate, useParams } from "react-router-dom"
 import axios from "axios"
 import { HOST } from "../../../../HOST";
 import s from "../../../css/AdminUserDetail.module.css"
@@ -11,6 +11,7 @@ export const dateTransfer=(timeStamp)=>{
     return fecha.toLocaleDateString('es-ES', opciones);
 }
 const AdminUserDetail=()=>{
+    const navigate=useNavigate()
     const {id}=useParams()
     const[info,setInfo]=useState([])
    const{token,domain}=useSelector(state=>state.user)
@@ -27,7 +28,7 @@ let order={}
        course:response.data[0].enrolledcourses.find(c=>c.id== user?.enrolledcourses[i]?.id ),
        grades:response.data[0].grades
     }
-    // console.log(order);
+ 
 a.push(order)
 }
 
@@ -36,9 +37,10 @@ setInfo(a)
 courses()
 },[])
 
-console.log(info);
 return(
     <div>
+        <button onClick={()=>navigate("/adminHome")}>HOME</button>
+        <button onClick={()=>navigate("/adminHome/users")}>Atras</button>
     <h1>{user?.fullname}</h1>
     <h5>{user?.email}</h5>
     {user.phone1&&<h5>{user?.phone1}</h5>}
