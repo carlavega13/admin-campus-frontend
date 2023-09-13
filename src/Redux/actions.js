@@ -4,7 +4,6 @@ import axios from "axios"
 import {HOST}from"../../HOST"
 
 export const login=(user)=>{
-
     return async (dispatch)=>{
      try {
         const response=await axios.post(`${HOST}login`,user)

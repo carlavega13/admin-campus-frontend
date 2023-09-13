@@ -100,9 +100,9 @@ return(
         </div>
     {sliceUsers?.map(student=>{
         let progress=0
-        if(student.enrolledcourses.progress){
+        if(!student?.enrolledcourses?.errorcode){
 
-    
+ 
             progress= student?.enrolledcourses?.find(co=>co.id==id).progress
         }
         return (
