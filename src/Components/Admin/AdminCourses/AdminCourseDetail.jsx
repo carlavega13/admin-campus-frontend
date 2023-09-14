@@ -86,7 +86,7 @@ const handleEnvolope=(to)=>{
         to:to
     })
     }
-
+console.log(sliceUsers[0].grades.length);
 return(
     <div className={s.box}>
         <button onClick={()=>navigate("/adminHome/courses")}>Atras</button>
@@ -95,7 +95,14 @@ return(
         <h4 className={flag?.state?s.blur:s.normal}>Nombres</h4>
         <h4 className={flag?.state?s.blur:s.normal}>Email</h4>
         <h4 className={flag?.state?s.blur:s.normal}>Telefono</h4>
-        <h4 className={flag?.state?s.blur:s.normal}>Calificación</h4>
+          {sliceUsers[0].grades.map(grade=>{
+              if(grade.itemname){
+                  return(
+                      <h4 className={flag?.state?s.blur:s.normal} >{grade.itemname}</h4>
+                      )
+                    }
+                })}
+                <h4 className={flag?.state?s.blur:s.normal}>Calificación final</h4>
         <h4 className={flag?.state?s.blur:s.normal}>Porcentaje de finalizacion</h4>
         </div>
     {sliceUsers?.map(student=>{
@@ -110,6 +117,7 @@ return(
                 <div className={s.name}>{student.fullname}</div>
                 <div className={s.name}><input value={student.email} onClick={handlerCheckBox} type="checkbox" />{student.email}<GrMailOption onClick={()=>handleEnvolope(student.email)}/></div>
                 <div className={s.name}>{student.phone1}{student.phone1?<a href={`https://wa.me/${student.phone1}`}><BsWhatsapp/></a>:""}</div>
+                {student.grades.map(grade=>grade.itemname&&<div className={s.name}>{grade.graderaw?grade.graderaw:"No realizado"}</div>)}
                 <div className={s.name}>{student.grades&&student.grades[student.grades.length-1].graderaw?student.grades[student.grades.length-1].graderaw:0}</div>
                 <div className={s.name}>{progress?progress.toFixed(2):"0.00"}%</div>
             </div>
