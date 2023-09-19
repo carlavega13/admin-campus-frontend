@@ -1,5 +1,5 @@
 
-import { GET_ALL_USERS, GET_COURSES, GET_GRADES, LOGIN, PUT_USER,PUT_DOMAIN } from "./actionTypes";
+import { GET_ALL_USERS, GET_COURSES, GET_GRADES, LOGIN, PUT_USER,PUT_DOMAIN, DELETE_ALL } from "./actionTypes";
 import axios from "axios"
 import {HOST}from"../../HOST"
 
@@ -61,3 +61,6 @@ try {
 
 }
 
+export const deleteAll=()=>{
+   return {type:DELETE_ALL}
+}

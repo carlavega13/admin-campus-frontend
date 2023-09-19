@@ -1,4 +1,4 @@
-import { GET_ALL_USERS, GET_COURSES, LOGIN, PUT_USER,GET_GRADES } from "./actionTypes"
+import { GET_ALL_USERS, GET_COURSES, LOGIN, PUT_USER,GET_GRADES, DELETE_ALL } from "./actionTypes"
 
 const initialState={
     user:{
@@ -53,6 +53,23 @@ switch (action.type) {
                     ...state,
                     courses:res
                 }
+                case DELETE_ALL:
+                    return{
+                    ...state,
+                    user:{
+                        id:0,
+                        username:"",
+                        domain:"",
+                        token:"",
+                        rol:"",
+                        phone:"",
+                        email:""
+                    },
+                    courses:[],
+                    allUsers:[],
+                    allUsersCopia:[]
+                    }
+
                     
     default:
         return {...state}

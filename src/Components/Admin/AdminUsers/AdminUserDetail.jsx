@@ -4,6 +4,10 @@ import { useNavigate, useParams } from "react-router-dom"
 import axios from "axios"
 import { HOST } from "../../../../HOST";
 import s from "../../../css/AdminUserDetail.module.css"
+import { GrMailOption } from 'react-icons/gr';
+import { BsWhatsapp } from 'react-icons/bs';
+import EmailPopOut from "../../EmailPopOut";
+
 
 export const dateTransfer=(timeStamp)=>{
     const fecha = new Date(timeStamp*1000);
@@ -11,13 +15,24 @@ export const dateTransfer=(timeStamp)=>{
     return fecha.toLocaleDateString('es-ES', opciones);
 }
 const AdminUserDetail=()=>{
+
     const navigate=useNavigate()
     const {id}=useParams()
+    const[flag,setFlag]=useState({
+        state:false,
+        to:""
+    })
     const[info,setInfo]=useState([])
    const{token,domain}=useSelector(state=>state.user)
    const allUsers=useSelector(state=>state.allUsers)
    let user=allUsers?.find(u=>u.id==id)
 let order={}
+const handleEnvolope=(to)=>{
+    setFlag({
+        state:true,
+        to:to
+    })
+    }
    useEffect(()=>{
        const courses=async()=>{
         let a=[]
@@ -36,14 +51,14 @@ setInfo(a)
 }
 courses()
 },[])
-
+// console.log(flag.state);
 return(
     <div>
         <button onClick={()=>navigate("/adminHome")}>HOME</button>
         <button onClick={()=>navigate("/adminHome/users")}>Atras</button>
     <h1>{user?.fullname}</h1>
-    <h5>{user?.email}</h5>
-    {user.phone1&&<h5>{user?.phone1}</h5>}
+    <h5 onClick={()=>handleEnvolope(user?.email)}>{user?.email}<GrMailOption/></h5>
+    {user.phone1&&<h5>{user?.phone1}<a href={`https://wa.me/${user?.phone1}`}><BsWhatsapp/></a></h5>}
     <h5>{dateTransfer(user.firstaccess)}</h5>
   {user?.enrolledcourses?.length>0&&info?.length==0?<div>LOADING</div>:
   <div>
@@ -76,6 +91,7 @@ return(
     </div>
   </div>
 }
+{flag?.state&&<EmailPopOut to={flag.to} flag={flag.state} setFlag={setFlag}/>}
     </div>
 )
 }

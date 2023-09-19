@@ -86,7 +86,10 @@ const handleEnvolope=(to)=>{
         to:to
     })
     }
-console.log(sliceUsers[0].grades.length);
+    let gradesName= course?.enrolledPeople?.find(p=>!p?.enrolledcourses?.errorcode&&p?.grades).grades?.map(g=>g.itemname)
+    gradesName.pop()
+
+
 return(
     <div className={s.box}>
         <button onClick={()=>navigate("/adminHome/courses")}>Atras</button>
@@ -95,13 +98,7 @@ return(
         <h4 className={flag?.state?s.blur:s.normal}>Nombres</h4>
         <h4 className={flag?.state?s.blur:s.normal}>Email</h4>
         <h4 className={flag?.state?s.blur:s.normal}>Telefono</h4>
-          {sliceUsers[0].grades.map(grade=>{
-              if(grade.itemname){
-                  return(
-                      <h4 className={flag?.state?s.blur:s.normal} >{grade.itemname}</h4>
-                      )
-                    }
-                })}
+          {gradesName?.map(grade=> <h4 className={flag?.state?s.blur:s.normal} >{grade}</h4>)}
                 <h4 className={flag?.state?s.blur:s.normal}>Calificación final</h4>
         <h4 className={flag?.state?s.blur:s.normal}>Porcentaje de finalizacion</h4>
         </div>

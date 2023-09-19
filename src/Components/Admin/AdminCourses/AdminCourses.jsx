@@ -16,7 +16,7 @@ const AdminCourses=()=>{
         state:false,
         to:""
     })
-    if(courses.length===0){
+    if(courses?.length===0){
         dispatch(getCourses({domain:user.domain,token:user.token}))
         return(
             <>
