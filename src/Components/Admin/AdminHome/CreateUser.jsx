@@ -29,7 +29,7 @@ const CreateUser=({domain,isSuperAdmin,setFlags,flags})=>{
    if(token.data.token){
     if(isSuperAdmin){
         const res= await axios.post(`${HOST}postUser`,{username:info?.username,password:info?.password,rol:"administrador",isSuperAdmin:true})
-        console.log("res ",res.data);
+        console.log(res.data);
         if(res.data.id){
             alert(`El usuario superAdmin: ${res.data.username} se creó exitosamente para el Moodle de URL: ${domain}`)
             if(setFlags && flags){
