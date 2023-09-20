@@ -1,1 +1,1 @@
-export const  HOST="https://admin-campus-back.onrender.com/"
+export const  HOST="https://admin-campus.onrender.com"
