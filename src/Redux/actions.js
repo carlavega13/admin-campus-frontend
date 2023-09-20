@@ -7,7 +7,7 @@ export const login=(user)=>{
     return async (dispatch)=>{
      try {
         const response=await axios.post(`${HOST}login`,user)
-
+        console.log(response);
         return dispatch({type:LOGIN,payload:response.data})
      } catch (error) {
         alert(error.response.data)
