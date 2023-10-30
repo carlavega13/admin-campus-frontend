@@ -1,99 +1,103 @@
 import { useDispatch, useSelector } from "react-redux"
 import { getAllUsers } from "../../../Redux/actions";
-import Paginated from "../../Paginated";
 import { useState } from "react";
 import s from "../../../css/AdminUsers.module.css"
 import { BsWhatsapp } from 'react-icons/bs';
-import { GrMailOption } from 'react-icons/gr';
 import EmailPopOut from "../../EmailPopOut";
 import { useNavigate } from "react-router-dom";
+import { DataGrid } from '@mui/x-data-grid';
+import loading from "../../../public/images/AdminHome/loading-loading-gif.gif"
 const AdminUsers=()=>{
     const navigate=useNavigate()
-    const [page,setPage]=useState(1)
-    const[checkbox,setCheckbox]=useState([])
-    const[flag,setFlag]=useState({
-        state:false,
-        to:""
-    })
     const dispatch=useDispatch()
-    let {user,allUsers,allUsersCopia}=useSelector(state=>state)
-
-    const usuariosPorPagina = 15; // Cantidad de usuarios por página
-    const inicio = (page - 1) * usuariosPorPagina;
-    const fin = inicio + usuariosPorPagina;
+    const [users,setUsers]=useState([])
+    let {user,allUsers}=useSelector(state=>state)
+    const[flag,setFlag]=useState({
+                state:false,
+                to:[]
+            })
     
-    let sliceUsers = allUsersCopia.slice(inicio, fin);
- 
-    if(allUsers?.length===0){
+        if(allUsers?.length===0){
         dispatch(getAllUsers({domain:user?.domain,token:user?.token}))
         return( 
-            <>
-            LOADING!!!!!
-            </>
+            <div className={s.divLoading}>
+              <img src={loading} alt="loading" className={s.loading} />
+            </div>
         )
     }
 
-const handlerCheckBox=(e)=>{
-
-if(e.target.checked){
-    setCheckbox([...checkbox,e.target.value])
-}else{
-    
-    setCheckbox(checkbox.filter(user=>user!==e.target.value))
-}
-
-}
-const handleEnvolope=(to)=>{
-setFlag({
-    state:true,
-    to:to
-})
-}
-const handlerSendAll=()=>{
-    let allEmails=allUsers?.map(user=>user.email)
-   setFlag({
-    state:true,
-    to:allEmails
-   })
-}
-const handlerSendSelected=()=>{
-if(checkbox.length===0){
-alert("Debes selecionar al menos un usuario")
-}else{
-
-    setFlag({
-        state:true,
-        to:checkbox
+const columns=[
+    { field: 'fullname', headerName: 'NOMBRE',width: 300,description:"Haga click en un nombre para ver el detalle del usuario"},  
+    { field: 'email', headerName: 'EMAIL',width: 300},
+    {
+        field: 'phone1',
+        headerName: "TELEFONO",
+        width: 150,
+        renderCell: (params) => {
+          const phoneNumber = params.row.phone1;
+          if (phoneNumber) {
+            return (
+                <div style={{display:"flex"}}>
+                           <p>{params.row.phone1}</p>
+              <a  href={`https://wa.me/${phoneNumber}`} target="_blank" rel="noopener noreferrer">
+                <BsWhatsapp style={{position:"relative",top:"15", marginLeft:"10"}} />
+              </a>
+                </div>
+         
+            );
+          }
+          return null;
+        },
+      },
+    ]
+    const rows=allUsers?.map(user=>{
+        return {id:user.id,fullname:user.fullname,email:user.email,phone1:user.phone1?user.phone1:""}
     })
-}
-}
-
-return(
-    <div>
-        <button onClick={()=>navigate("/adminHome")}>HOME</button>
-       <div className={s.box}>
-        <div className={s.names}>
-        <h4 className={flag.state?s.blur:s.normal}>Nombres</h4>
-        <h4 className={flag.state?s.blur:s.normal}>Email</h4>
-        <h4 className={flag.state?s.blur:s.normal}>Telefono</h4>
+    const handlerSendSelected=()=>{
+    if(users.length===0){
+    alert("Debes selecionar al menos un usuario")
+    }else{
+    const usersInfo=users.map(id=>allUsers.find(user=>user.id==id).email)
+    
+        setFlag({
+            state:true,
+            to:usersInfo
+        })
+    }
+    }
+    
+      return(
+        <div>
+          <button onClick={()=>navigate("/createUser")}className={s.btnCreate}>Crear usuario</button>
+          <div style={{ height: 500, width: '100%'}}>
+          <DataGrid
+           rows={rows}
+           columns={columns}
+           initialState={{
+            pagination: {
+              paginationModel: { page: 0, pageSize: 6 },
+            },
+          }}
+          pageSizeOptions={[6,10,40,50]}
+          checkboxSelection
+          onRowSelectionModelChange={(user)=>{
+            setUsers(user)
+          }}
+          onCellClick={(params,e)=>{
+            console.log(params,e);
+            if(params.field==="fullname"){
+                navigate(`/adminHome/users/${params.id}`)
+            }
+          
+                }}
+          
+          />
         </div>
-        {sliceUsers?.map(user=>{
-                return(
-                    <div className={s.cell}>
-                      <div onClick={()=>navigate(`/adminHome/users/${user.id}`)} className={s.info}>{user.fullname}</div>
-                      <div className={s.info}><input value={user.email} onClick={handlerCheckBox} type="checkbox" />{user.email}<GrMailOption  onClick={()=>handleEnvolope(user.email)}/></div>
-                      <div className={s.info}>{user.phone1}{user.phone1?<a href={`https://wa.me/${user.phone1}`}><BsWhatsapp /></a>:""}</div>
-                      
-                        </div>
-                )
-            
-        })}
-       </div>
-        <Paginated page={page} setPage={setPage} allUsersCopiaAmount={allUsersCopia?.length}/>
-        <button onClick={handlerSendSelected}>Enviar email a todos los usuarios seleccionados</button>
-        <button onClick={handlerSendAll}>Enviar email a todos los usuarios ({`${allUsers.length}`})</button>
+        <button onClick={handlerSendSelected}
+          className={s.btnEmails}>{`Enviar mensaje a los usuarios seleccionados (${users?.length})`}</button>
         {flag.state?<EmailPopOut  to={flag.to} flag={flag.state} setFlag={setFlag}/>:""}
-    </div>
-)
-}
-export default AdminUsers
+        </div>
+        )
+    }
+    
+    export default AdminUsers

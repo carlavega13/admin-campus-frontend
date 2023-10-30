@@ -55,7 +55,7 @@ courses()
 return(
     <div>
         <button onClick={()=>navigate("/adminHome")}>HOME</button>
-        <button onClick={()=>navigate("/adminHome/users")}>Atras</button>
+
     <h1>{user?.fullname}</h1>
     <h5 onClick={()=>handleEnvolope(user?.email)}>{user?.email}<GrMailOption/></h5>
     {user.phone1&&<h5>{user?.phone1}<a href={`https://wa.me/${user?.phone1}`}><BsWhatsapp/></a></h5>}

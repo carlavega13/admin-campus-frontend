@@ -23,3 +23,50 @@ background-color: rgba(233, 156, 79, 0.431);
     color: transparent; /* Hace que el texto sea transparente */
     text-shadow: 0 0 5px rgba(0, 0, 0, 0.752); 
 }
+
+.divLoading {
+    width: 100%;
+    /* background-color: red; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+.loading {
+    width: 7rem;
+    height: 7rem;
+}
+.btnCreate {
+    background: #2f3367;
+    height: 1.6rem;
+    border-radius: 4px;
+    border: none;
+    font-weight: bold;
+    font-size: 1rem;
+    color: #fff;
+    letter-spacing: .1rem;
+    transition: .3s;
+    width: 12rem;
+    margin: .5rem 0 1rem 0;
+}
+.btnCreate:hover {
+    background: #535AAC;
+}
+.btnEmails {
+    background: #2f3367;
+    height: auto;
+    border-radius: 4px;
+    border: none;
+    font-weight: bold;
+    font-size: .85rem;
+    color: #fff;
+    letter-spacing: .1rem;
+    transition: .3s;
+    width: auto;
+    padding: 4px 16px 4px 16px;
+    margin: .5rem 0 1rem 0;
+}
+.btnEmails:hover {
+    background: #535AAC;
+}

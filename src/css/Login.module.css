@@ -1,6 +1,6 @@
 .containerLogin {
     background-color: #fff;
-    width: 22rem;
+    width: 500px;
     height: 100%;
     max-height: 30rem;
     display: flex;
@@ -8,55 +8,57 @@
     align-items: center;
     justify-content: flex-start;
     padding-top: 1rem;
-    box-shadow: 2px 2px .3rem .1rem rgb(0, 0, 0, 0.35);
-    border-radius: 1rem;
+    border-radius: 12px;
 }
-.icons {
+.title {
+    font-family: Helvetica Narrow, sans-serif;
+    font-weight: bold;
+    color: #2f3367;
     width: 100%;
-    display: flex;
-    height: 14rem;
-    justify-content: center;
-}
-.robotStandar {
-    width: 8rem;
-    height: 11.5rem;
-    align-self: flex-end;
-}
-.msgIcon {
-    width: 8rem;
-    height: 6rem;
+    font-size: 1.7rem;
+    
 }
 .inputs {
-    margin-top: 2rem;
     display: flex;
     flex-direction: column;
     height: 12rem;
-    width: 90%;
+    width: 100%;
     justify-content: space-between;
 }
 .inputs input {
-    border-radius: 6px 6px 0 0;
+    border-radius: 3px;
+    background: #f5f5f7;
     height: 2rem;
+    width: 100%;
     letter-spacing: 1px;
     padding-left: .5rem;
     border: none;
-    border-bottom: 2px solid #1B8FD8;
     outline: none;
 }
-.inputs label {
-    font-weight: bold;
-    letter-spacing: 1px;
-    font-size: .8rem;
-    width: fit-content;
-    padding: 0px 8px 0px 8px;
-    position: relative;
-    top: .7rem;
-    color: #1B8FD8
+
+.inputs div {
+    background: #f5f5f7;
+    display: flex;
+    border-radius: 3px;
+    padding: 4px;
+    align-items: center;
+}
+input:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0 1000px #f5f5f7 inset;
+}
+
+.userIcon {
+    width: 1.7rem;
+    height: 1.7rem;
+}
+.passIcon {
+    width: 1.7rem;
+    height: 1.7rem;
 }
 .btnLogin {
-    background: #EEB141;
+    background: #2f3367;
     height: 2rem;
-    border-radius: 12px;
+    border-radius: 4px;
     border: none;
     font-weight: bold;
     font-family: Roboto;
@@ -66,14 +68,14 @@
     transition: .3s;
     width: 100%;
     max-width: 16rem;
-    align-self: center;
+    align-self: flex-end;
 }
 .btnLogin:hover {
-    background: #F3CD87;
+    background: #535AAC;
     cursor: pointer
 }
 
-@media (max-width: 960px) {
+@media (max-width: 1110px) {
     .containerLogin {
         width: 100%;
     }

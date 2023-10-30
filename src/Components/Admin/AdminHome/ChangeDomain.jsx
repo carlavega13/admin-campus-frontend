@@ -1,11 +1,11 @@
 import { useState } from "react"
 import axios from "axios"
 import { HOST } from "../../../../HOST"
-import CreateUser from "./CreateUser"
+import CreateAdmin from "./CreateAdmin"
 import { useDispatch } from "react-redux"
 import { deleteAll } from "../../../Redux/actions"
 import { useNavigate } from "react-router-dom"
-
+import s from "../../../css/ChangeDomain.module.css"
 const ChangeDomain=()=>{
   const navigate=useNavigate()
   const dispatch=useDispatch()
@@ -46,22 +46,23 @@ const onChangeDomain=(e)=>{
     setDomain(e.target.value)
   }
 }
-
- return(
-    <div>
+return(
+  <div className={s.container}>
+  <div>
 
     <label>Cambiar dominio de Moodle:</label>
     <input onChange={onChangeDomain} value={domain} type="text" placeholder="URL de Moodle" />
     <button onClick={handleDomain}>Cambiar</button>
-    <p>Recordá que la URL debe ser valida para una instancia de Moodle.
-        Ejemplo: "https://ejemplo.ar/moodleejemplo/"
-    </p>
-    {flags.warningFlag&&<div>
-      <p>Necesitas crear un usuario SuperAdmin para esta URL de moodle</p>
-      <button onClick={handleCreateUser}>Crear usuario SuperAdmin</button>
-      </div>}
-      {flags.componentFlag&&<CreateUser domain={domain} setFlags={setFlags} flags={flags} isSuperAdmin={true}/>}
-    </div>
- )   
+  </div>
+  <p className={s.pEjemplo}>Recordá que la URL debe ser valida para una instancia de Moodle.
+      Ejemplo: "https://ejemplo.ar/moodleejemplo/"
+  </p>
+  {flags.warningFlag&&<div>
+    <p>Necesitas crear un usuario SuperAdmin para esta URL de moodle</p>
+    <button onClick={handleCreateUser}>Crear usuario SuperAdmin</button>
+    </div>}
+    {flags.componentFlag&&<CreateAdmin domain={domain} setFlags={setFlags} flags={flags} isSuperAdmin={true}/>}
+  </div>
+)   
 }
 export default ChangeDomain

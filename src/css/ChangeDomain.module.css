@@ -1,0 +1,54 @@
+.container {
+    /* background: red; */
+}
+.container > div {
+    /* background: green; */
+    width: 32rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+}
+.container > div > button {
+    background: #2f3367;
+    height: auto;
+    border-radius: 4px;
+    border: none;
+    font-weight: bold;
+    font-size: .85rem;
+    color: #fff;
+    letter-spacing: .1rem;
+    transition: .3s;
+    width: auto;
+    padding: 4px 16px 4px 16px; 
+    cursor: pointer;
+    margin-top: 10px;
+}
+.container>div>button:hover {
+    background: #535AAC;
+}
+.container>div>label {
+    color: #868AA5;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+.container>div>input {
+    color: #868AA5;
+    font-size: .95rem;
+    letter-spacing: 1px;
+    padding: 0 6px 0 6px;
+    margin-top: 10px;
+}
+.pEjemplo {
+    overflow-wrap: break-word;
+}
+
+@media (max-width: 655px) {
+    .container > div {
+        width: 100%;
+     
+    }
+    .container>div>input {
+        width: 100%;
+}
+}

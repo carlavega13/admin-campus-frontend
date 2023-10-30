@@ -1,9 +1,9 @@
-import { useSelector } from "react-redux"
+
 import s from "../css/Paginated.module.css"
 const Paginated=(props)=>{
     let{allUsersCopiaAmount,page,setPage}=props
 
-let aux=1
+
 
 const totalPages = Math.ceil(allUsersCopiaAmount / 15);
 

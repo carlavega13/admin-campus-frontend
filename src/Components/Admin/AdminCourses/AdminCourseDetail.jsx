@@ -4,128 +4,128 @@ import s from "../../../css/AdminCourseDetail.module.css"
 import Papa from 'papaparse';
 import downloadCsv from "../../../downloadCsv";
 import { BsWhatsapp } from 'react-icons/bs';
-import { GrMailOption } from 'react-icons/gr';
 import { useState } from "react";
-import Paginated from "../../Paginated";
 import EmailPopOut from "../../EmailPopOut";
 import { getGrades } from "../../../Redux/actions";
+import { DataGrid } from '@mui/x-data-grid';
 
 const AdminCourseDetail=()=>{
-    const navigate =useNavigate()
+        const navigate =useNavigate()
     const[flag,setFlag]=useState({
         state:false,
         to:""
     })
-    const[checkbox,setCheckbox]=useState([])
-    const {id}=useParams()
-    const [page,setPage]=useState(1)
-    let {courses,user}=useSelector(state=>state)
+    const [users,setUsers]=useState([])
+const {id}=useParams()
+let {courses,user}=useSelector(state=>state)
     let course=courses?.find(co=>co.id==id)
     course.enrolledPeople=course.enrolledPeople?.filter(student=>student?.roles&&student.roles[0]?.shortname!=="teacher"&&student?.roles&&student.roles[0]?.shortname!=="editingteacher")
-   const dispatch=useDispatch()
-
-   if(!course.enrolledPeople.find((pe)=>pe.grades)){
-    dispatch(getGrades(course.enrolledPeople,user.token,user.domain,id))
-    return(
-        <>
-        <button onClick={()=>navigate("/adminHome")}>HOME</button>
-        LOADING!!!!!!
-        </>
-    )
+       const dispatch=useDispatch()
     
-       }
-    let csvInfo=course.enrolledPeople.map(people=>{
-        return {
-            nombre:people.fullname,
-            email:people.email,
-            telefono:people.phone1
-        }
-    })
-    csvInfo=Papa.unparse(csvInfo)
-    
-    const handlerDownloadCsv=()=>{
-        downloadCsv(csvInfo,`${course.name} alumnos.csv`)
-}
-
-const usuariosPorPagina = 15; // Cantidad de usuarios por página
-const inicio = (page - 1) * usuariosPorPagina;
-const fin = inicio + usuariosPorPagina;
-
-let sliceUsers = course.enrolledPeople.slice(inicio, fin);
-const handlerSendAll=()=>{
-    let allEmails=  course.enrolledPeople?.map(user=>user.email)
-   setFlag({
-    state:true,
-    to:allEmails
-   })
-}
-const handlerCheckBox=(e)=>{
-
-    if(e.target.checked){
-        setCheckbox([...checkbox,e.target.value])
-    }else{
-        
-        setCheckbox(checkbox.filter(user=>user!==e.target.value))
-    }
-    
-    }
-const handlerSendSelected=()=>{
-if(checkbox.length===0){
-alert("Debes selecionar al menos un usuario")
-}else{
-
-    setFlag({
-        state:true,
-        to:checkbox
-    })
-}
-}
-const handleEnvolope=(to)=>{
-    setFlag({
-        state:true,
-        to:to
-    })
-    }
-    let gradesName= course?.enrolledPeople?.find(p=>!p?.enrolledcourses?.errorcode&&p?.grades).grades?.map(g=>g.itemname)
-    gradesName.pop()
-
-
-return(
-    <div className={s.box}>
-        <button onClick={()=>navigate("/adminHome/courses")}>Atras</button>
-        <button onClick={()=>navigate("/adminHome")}>HOME</button>
-          <div className={s.names}>
-        <h4 className={flag?.state?s.blur:s.normal}>Nombres</h4>
-        <h4 className={flag?.state?s.blur:s.normal}>Email</h4>
-        <h4 className={flag?.state?s.blur:s.normal}>Telefono</h4>
-          {gradesName?.map(grade=> <h4 className={flag?.state?s.blur:s.normal} >{grade}</h4>)}
-                <h4 className={flag?.state?s.blur:s.normal}>Calificación final</h4>
-        <h4 className={flag?.state?s.blur:s.normal}>Porcentaje de finalizacion</h4>
-        </div>
-    {sliceUsers?.map(student=>{
-        let progress=0
-        if(!student?.enrolledcourses?.errorcode){
-
- 
-            progress= student?.enrolledcourses?.find(co=>co.id==id).progress
-        }
-        return (
-            <div className={s.cell}>
-                <div className={s.name}>{student.fullname}</div>
-                <div className={s.name}><input value={student.email} onClick={handlerCheckBox} type="checkbox" />{student.email}<GrMailOption onClick={()=>handleEnvolope(student.email)}/></div>
-                <div className={s.name}>{student.phone1}{student.phone1?<a href={`https://wa.me/${student.phone1}`}><BsWhatsapp/></a>:""}</div>
-                {student.grades.map(grade=>grade.itemname&&<div className={s.name}>{grade.graderaw?grade.graderaw:"No realizado"}</div>)}
-                <div className={s.name}>{student.grades&&student.grades[student.grades.length-1].graderaw?student.grades[student.grades.length-1].graderaw:0}</div>
-                <div className={s.name}>{progress?progress.toFixed(2):"0.00"}%</div>
-            </div>
+       if(!course.enrolledPeople.find((pe)=>pe.grades)){
+        dispatch(getGrades(course.enrolledPeople,user.token,user.domain,id))
+        return(
+            <>
+            <button onClick={()=>navigate("/adminHome")}>HOME</button>
+            LOADING!!!!!!
+            </>
         )
-    })}
-    <button onClick={handlerDownloadCsv}>Descargar CSV</button>
-    {course?.enrolledPeople?.length>15&&<Paginated page={page} setPage={setPage} allUsersCopiaAmount={course?.enrolledPeople?.length}/>}
-    <button onClick={handlerSendSelected}>Enviar email a los alumnos seleccionados</button>
-    <button onClick={handlerSendAll}>Enviar email a todos los alumnos {`(${course?.enrolledPeople?.length})`}</button>
-    {flag.state?<EmailPopOut  to={flag.to} flag={flag.state} setFlag={setFlag}/>:""}
+        
+           }
+        let csvInfo=course.enrolledPeople.map(people=>{
+            return {
+                nombre:people.fullname,
+                email:people.email,
+                telefono:people.phone1
+            }
+        })
+        csvInfo=Papa.unparse(csvInfo)
+        
+        const handlerDownloadCsv=()=>{
+            downloadCsv(csvInfo,`${course.name} alumnos.csv`)
+    }
+    const columns=[
+        { field: 'fullname', headerName: 'NOMBRE',width: 100},
+        { field: 'email', headerName: 'EMAIL',width: 100},
+        { field: 'phone1', headerName: 'TELEFONO',width: 150,renderCell:(params)=>{
+            if(params.row.phone1){
+                return(
+                    <div style={{display:"flex", justifyContent: "space-between", alignItems:"center", width: "300px"}}>
+                        <p>{params.row.phone1}</p>
+                           <a  href={`https://wa.me/${params.row.phone1}`} target="_blank" rel="noopener noreferrer">
+              <BsWhatsapp style={{color: "#2f3367"}} />
+            </a>
+                    </div>
+                )
+            }
+        }},
+ 
+    ...course?.enrolledPeople.find(pep=>pep.grades&&pep.grades.length>0).grades.map(grade=>{
+            if(grade.itemname){
+
+                return{field:grade.itemname,headerName:grade.itemname,width:150}
+            }
+        }),
+        { field: 'finalgrade', headerName: 'CALIFICACIÓN FINAL',width: 150},
+        { field: 'finalPercentage', headerName: 'PORCENTAJE FINAL',width: 150},
+    ].filter(pe=>pe)
+const rows=course?.enrolledPeople.map(pep=>{
+    let aux={ id:pep.id, fullname:pep.fullname,email:pep.email,phone1:pep.phone1?pep.phone1:"",}
+    for (let i = 0; i < pep.grades.length; i++) {
+
+        if(pep.grades[i].itemname){
+            aux[pep.grades[i].itemname]=pep.grades[i].graderaw?pep.grades[i].graderaw:""
+
+        }else{
+           aux.finalgrade=pep.grades[i].graderaw?pep.grades[i].graderaw:""
+        }
+        
+    }
+    if(!pep.enrolledcourses?.errorcode){
+
+
+        aux.finalPercentage= pep.enrolledcourses?.find(co=>co.id==id).progress
+    }
+  return aux
+})
+const handleSendMail=()=>{
+    if(users.length===0){
+        alert("Debes selecionar al menos un usuario")
+        }else{
+  
+        
+            setFlag({
+                state:true,
+                to:users.map(id=>course?.enrolledPeople?.find(user=>user.id==id).email)
+            })
+        }
+}
+return(
+    <div>
+       <button onClick={()=>navigate("/adminHome")}>HOME</button>
+        <div>
+
+        <DataGrid
+        columns={columns}
+        rows={rows}
+        initialState={{
+            pagination: {
+              paginationModel: { page: 0, pageSize: 6 },
+            },
+          }}
+          pageSizeOptions={[6,10,40,50]}
+          checkboxSelection
+          onRowSelectionModelChange={(user)=>{
+            setUsers(user)
+          }}
+       
+        />
+        </div>
+        <button onClick={handlerDownloadCsv}>Descargar CSV</button>
+        <button onClick={handleSendMail}>{`Enviar mensaje a los usuarios seleccionados (${users?.length})`}</button>
+        {flag.state?<EmailPopOut  to={flag.to} flag={flag.state} setFlag={setFlag}/>:""}
     </div>
 )
 }
+
 export default AdminCourseDetail

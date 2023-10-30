@@ -1,0 +1,6 @@
+.countryList{
+    background-color: aqua;
+    width: 500px; /* Establece el ancho deseado para el div */
+    height: 400px; /* Establece la altura deseada para el div */
+    overflow: auto;
+}

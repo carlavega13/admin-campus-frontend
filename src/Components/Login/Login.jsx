@@ -3,8 +3,8 @@ import { useDispatch, useSelector } from "react-redux"
 import { login } from "../../Redux/actions"
 import { useNavigate } from "react-router-dom"
 import s from "../../css/Login.module.css"
-import robotStandar from "../../public/images/Login/ROBOT-VERDE.png"
-import msgIcon from "../../public/images/Login/Vector-Nube-Msg.png"
+import userIcon from "../../public/images/Login/Profile.png"
+import passIcon from "../../public/images/Login/mdi_password.png"
 
 const Login=()=>{
     const navigate=useNavigate()
@@ -41,27 +41,25 @@ const Login=()=>{
 return (
     <div className={s.containerLogin}>
 
-      <div className={s.icons}>
-        <img src={msgIcon}className={s.msgIcon}/>
-        <img src={robotStandar} className={s.robotStandar}/>
-      </div>
+      <p className={s.title}>Ingresa</p>
 
       <div className={s.inputs}>
 
-        <label htmlFor="username">
-          Nombre de usuario
-        </label>
-        <input onChange={handlerChange} name="username"value={user.username}
-            type="text" placeholder="Nombre de usuario"
-            />
-    
-        <label htmlFor="password">
-          Contraseña
-        </label>
-        <input onChange={handlerChange} name="password"
+        <div>
+          <img src={userIcon} className={s.userIcon} />
+          <input onChange={handlerChange} name="username"value={user.username}
+              type="text" placeholder="Nombre de usuario"
+              />
+        </div>
+
+        <div>
+          <img src={passIcon} className={s.passIcon} />
+          <input onChange={handlerChange} name="password"
             value={user.password} 
-            type="text" placeholder="Contraseña"/>
+            type="text" placeholder="Contraseña"
+          />
     
+        </div>
         <button onClick={handlerLogin}
             className={s.btnLogin}>Ingresar</button>
 
@@ -71,8 +69,3 @@ return (
 )
 }
 export default Login
-
-// Las contraseñas deben tener al menos una longitud de 8 caracteres.
-// Las contraseñas deben tener al menos 1 dígito(s).
-// Las contraseñas deben tener al menos 1 mayúscula(s).
-// Las contraseñas deben tener al menos 1 caracter(es) no alfanumérico(s) como *,-, o #.
