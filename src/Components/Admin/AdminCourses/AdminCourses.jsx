@@ -45,6 +45,7 @@ const columns=[
             <div style={{display:"flex", justifyContent: "space-between", alignItems:"center", width: "300px"}}>
             <p>{params.row.teacher}</p>
             <a  href={`https://wa.me/${phoneNumber}`} target="_blank" rel="noopener noreferrer">
+              <p>{phoneNumber}</p>
               <BsWhatsapp style={{color: "#2f3367"}} />
             </a>
           </div>
