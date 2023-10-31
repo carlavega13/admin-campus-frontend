@@ -75,7 +75,6 @@ setError(validator(profile))
                     info.city=profile.city
                 }
                 info.id=id
-                console.log(info);
               const res=await axios.put(`${HOST}putUserMoodle`,{
                 username:user?.username,
                 domain:user?.domain,
@@ -89,7 +88,7 @@ setError(validator(profile))
 
         }
     }
-    console.log(profile);
+
 
 return (
     <div className={s.box}>

@@ -7,7 +7,7 @@ import { useNavigate } from "react-router-dom"
 const FirstLoginEditProfile=()=>{
     const dispatch=useDispatch()
     const navigate=useNavigate()
-    const{id,phone,domain}=useSelector(state=>state.user)
+    const user=useSelector(state=>state.user)
     const[profile,setProfile]=useState({
         firstName:"",
         lastName:"",
@@ -40,12 +40,13 @@ const FirstLoginEditProfile=()=>{
      setError(validator(profile))
      console.log(error.phone);
      if(!error.firstName&&!error.lastName&&!error.phone&&!error.email){
-        dispatch(putUser({...profile,id,domain}))
+        dispatch(putUser({...profile,id:user.id,domain:user.domain}))
+        alert("Se actualizo su informacion")
+     console.log(user);
+     navigate("/adminHome")
     }
 }
-if(phone){
-    navigate("/adminHome")
-}
+
     return (
         <div className={s.box}>
              <label htmlFor="">Nombres <input onChange={handlerChange} name="firstName" value={profile.firstName} type="text" placeholder="Nombres" /></label>

@@ -79,19 +79,7 @@ input:-webkit-autofill {
     .containerLogin {
         width: 100%;
     }
-}
-
-@media (max-width: 500px) {
-    .robotStandar {
-        width: 5rem;
-        height: 7rem;
-    }
-    .msgIcon {
+    .title {
         display: none;
-    }
-    .icons { 
-        height: 7rem;
-        justify-content: center !important;
-        align-items: center !important;
     }
 }
