@@ -40,6 +40,7 @@ const columns=[
     { field: 'teacher', headerName: 'PROFESOR', width: 300,
     renderCell: (params) => {
         const phoneNumber = params.row.phone1;
+        console.log(params.row.teacher);
         if (phoneNumber) {
           return (
             <div style={{display:"flex", justifyContent: "space-between", alignItems:"center", width: "300px"}}>
