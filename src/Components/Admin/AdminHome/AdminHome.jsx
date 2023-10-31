@@ -16,7 +16,7 @@ import iconOptionsSelected from "../../../public/images/AdminHome/optionsSelecte
 import iconFileSelected from "../../../public/images/AdminHome/fileSelected.png"
 import iconReportSelected from "../../../public/images/AdminHome/reportSelected.png"
 import iconChangeSelected from "../../../public/images/AdminHome/changeSelected.png"
-import iconProfileSelected from "../../../public/images/AdminHome/profileSelected.png"
+import iconProfileSelected from "../../../public/images/AdminHome/profileSelected"
 import EditProfile from "../../EditProfile/EditProfile.jsx"
 
 const AdminHome = () => {
