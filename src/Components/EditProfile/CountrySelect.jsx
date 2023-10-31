@@ -1,7 +1,10 @@
 import { useEffect, useState } from "react";
 import countries from "../../functions/countries";
 import s from "../../css/CountrySelect.module.css"
+import { AiOutlineArrowDown } from 'react-icons/ai';
+import { RiDeleteBin2Line } from 'react-icons/ri';
 
+// AiOutlineArrowDown
 const CountrySelect=(props)=>{
     const [active,setActive]=useState(false)
     const [country,setCountry]=useState("")
@@ -25,7 +28,7 @@ const CountrySelect=(props)=>{
           
         return(
           <div>
-           <input value={country} onChange={handlerChange} type="text" name="country" id="" />{country.length>0&&<button onClick={()=>setCountry("")}>X</button>}<button onClick={()=>setActive(!active)}>!</button>
+           <input value={country} onChange={handlerChange} type="text" name="country" id="" />{country.length>0&&<button onClick={()=>setCountry("")}><RiDeleteBin2Line/></button>}<button onClick={()=>setActive(!active)}><AiOutlineArrowDown/></button>
            {active&&<div className={s.countryList}>
             {filteredCountries.length===0&&<div>NO SE ENCONTRO PAIS</div>}
         {filteredCountries.map(c=>{

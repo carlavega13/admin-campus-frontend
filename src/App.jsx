@@ -12,6 +12,7 @@ import ChangeDomain from './Components/Admin/AdminHome/ChangeDomain'
 import CreateCourse from './Components/Admin/AdminCourses/CreateCourse'
 import CreateUser from './Components/Admin/AdminUsers/CreateUser'
 import CountrySelect from './Components/EditProfile/CountrySelect'
+import Sheet from './Sheet'
 
 
 function App() {
@@ -27,6 +28,7 @@ function App() {
    <Route path='/adminHome/users/:id' element={<AdminUserDetail/>}/>
    <Route path='/createCourse' element={<CreateCourse/>}/>
    <Route path='/createUser' element={<CreateUser/>}/>
+   <Route path='/lala' element={<Sheet/>}/>
 
     </Routes>
     </div>

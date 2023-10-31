@@ -17,14 +17,13 @@ const EditProfile=()=>{
         email:"",
         username:"",
         password:"",
-country:"",
-city:""
-
+        country:"",
+        city:""
     })
     const dispatch=useDispatch() 
     const [error,setError]=useState({})
     useEffect(()=>{
-setError(validator(profile))
+    setError(validator(profile))
     },[profile])
     const user = useSelector(state => state.user)
     const allUsers = useSelector(state => state.allUsers)
@@ -92,25 +91,78 @@ setError(validator(profile))
 
 return (
     <div className={s.box}>
-        <h2>Edita la informacion de tu perfil:</h2>
-        <p>(Los campos vacios no modificaran tu información)</p>
-        <label htmlFor="">Nombre de usuario: <input value={profile.username} name="username" onChange={handleChange} type="text" /></label>
+
+      <h2>Edita la informacion de tu perfil:</h2>
+      <p>(Los campos vacios no modificaran tu información)</p>
+     <div className={s.formContainer}>
+
+      <div>
+        <label htmlFor="">Nombre de usuario: 
+        </label>
+            <input value={profile.username} name="username" onChange={handleChange} type="text" />
         {error?.username?<p>{error.username}</p>:<></>}
-        <label htmlFor="">Contraseña: <input value={profile.password} name="password" onChange={handleChange} type="text" /></label>
+      </div>
+
+      <div>
+
+        <label htmlFor="">Contraseña: 
+        </label>
+            <input value={profile.password} name="password" onChange={handleChange} type="text" />
         {error?.password?<p>{error.password}</p>:<></>}
-        <label htmlFor="">Nombre: <input value={profile.firstName} name="firstName" onChange={handleChange} type="text" /></label>
+      </div>
+
+      <div>
+
+        <label htmlFor="">Nombre: 
+        </label>
+            <input value={profile.firstName} name="firstName" onChange={handleChange} type="text" />
         {error?.firstName?<p>{error.firstName}</p>:<></>}
-        <label htmlFor="">Apellido: <input value={profile.lastName} name="lastName" onChange={handleChange} type="text" /></label>
+      </div>
+
+      <div>
+
+        <label htmlFor="">Apellido: 
+        </label>
+            <input value={profile.lastName} name="lastName" onChange={handleChange} type="text" />
         {error?.lastName?<p>{error.lastName}</p>:<></>}
-        <label htmlFor="">Telefono: <input value={profile.phone1} name="phone1" onChange={handleChange} type="text" /></label>
+      </div>
+
+      <div>
+
+        <label htmlFor="">Telefono: 
+        </label>
+            <input value={profile.phone1} name="phone1" onChange={handleChange} type="text" />
         {error?.phone1?<p>{error.phone1}</p>:<></>}
-        <label htmlFor="">Email: <input value={profile.email} name="email" onChange={handleChange} type="text" /></label>
+      </div>
+
+      <div>
+
+        <label htmlFor="">Email: 
+        </label>
+            <input value={profile.email} name="email" onChange={handleChange} type="text" />
         {error?.email?<p>{error.email}</p>:<></>}
-        <label htmlFor="">Pais: <CountrySelect profile={profile} setProfile={setProfile}/></label>
+      </div>
+
+      <div className={s.containerCountries}>
+
+        <label htmlFor="">Pais: 
+        </label>
+          <CountrySelect profile={profile} setProfile={setProfile}/>
         {error?.country?<p>{error.country}</p>:<></>}
-        <label htmlFor="">Ciudad: <input value={profile.city} name="city" onChange={handleChange} type="text" /></label>
+      </div>
+
+      <div>
+
+        <label htmlFor="">Ciudad: 
+        </label>
+        <input value={profile.city} name="city" onChange={handleChange} type="text" />
         {error?.city?<p>{error.city}</p>:<></>}
-    <button onClick={handleSend}>Editar mi informacion</button>
+      </div>
+
+
+
+     </div>
+        <button onClick={handleSend}className={s.btn}>Editar mi informacion</button>
     </div>
 )
 }

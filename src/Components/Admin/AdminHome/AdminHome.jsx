@@ -11,7 +11,6 @@ import { CgMenu } from "react-icons/cg"
 import { TfiExchangeVertical } from "react-icons/tfi"
 import EditProfile from "../../EditProfile/EditProfile.jsx"
 
-
 const AdminHome = () => {
   const navigate = useNavigate()
   const user = useSelector(state => state.user)
@@ -23,7 +22,6 @@ const AdminHome = () => {
   }
   return(
 <div className={s.containerAll}>
-
   <div className={s.container}>
     <div className={s.divSettings}>
       <div className={s.settings}>
