@@ -30,7 +30,7 @@ const CreateCourse=()=>{
         if(res.data[0].id){
             dispatch(getCourses({domain,token}))
             alert("Su curso se creo correctamente")
-            navigate("/adminhome/courses")
+            navigate("/adminHome")
              return
         }
         }
@@ -41,7 +41,7 @@ const CreateCourse=()=>{
     }
  }
 return(<div>
-    <button onClick={()=>navigate("/adminhome/courses")}>ATRAS</button><button onClick={()=>navigate("/adminHome")}>HOME</button>
+<button onClick={()=>navigate("/adminHome")}>HOME</button>
 <label htmlFor="">Nombre del curso</label>
 <input onChange={handleChange} value={info?.fullname} name="fullname" type="text" placeholder="Nombre del curso" /> 
 <label htmlFor="">Nombre corto</label>

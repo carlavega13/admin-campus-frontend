@@ -3,6 +3,7 @@ import { GET_ALL_USERS, GET_COURSES, GET_GRADES, LOGIN, PUT_USER,PUT_DOMAIN, DEL
 import axios from "axios"
 import {HOST}from"../../HOST"
 
+
 export const login=(user)=>{
     return async (dispatch)=>{
      try {
@@ -11,6 +12,8 @@ export const login=(user)=>{
         return dispatch({type:LOGIN,payload:response.data})
      } catch (error) {
         alert(error.response.data)
+
+      
      }
     }
 }

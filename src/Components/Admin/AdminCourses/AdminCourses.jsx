@@ -40,14 +40,12 @@ const columns=[
     { field: 'teacher', headerName: 'PROFESOR', width: 300,
     renderCell: (params) => {
         const phoneNumber = params.row.phone1;
-        console.log(params.row.teacher);
         if (phoneNumber) {
           return (
             <div style={{display:"flex", justifyContent: "space-between", alignItems:"center", width: "300px"}}>
             <p>{params.row.teacher}</p>
             <a  href={`https://wa.me/${phoneNumber}`} target="_blank" rel="noopener noreferrer">
-             <BsWhatsapp style={{color: "#2f3367"}} />
-              
+              <BsWhatsapp style={{color: "#2f3367"}} />
             </a>
           </div>
       );
@@ -89,6 +87,7 @@ if(teacher.length===0){
 }
 return(
     <div className={s.container}>
+      <button className={s.btnEmails} onClick={()=>navigate("/createCourse")}>Crear curso</button>
       <div >
         <DataGrid className={s.containerDataGrid}
          rows={rows}

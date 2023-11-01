@@ -24,7 +24,12 @@ const Login=()=>{
         })
     }    
     const handlerLogin=()=>{
+      try {
         dispatch(login(user))
+        
+      } catch (error) {
+        console.log("cada");
+      }
         
     }
     useEffect(()=>{},[userLogged])
