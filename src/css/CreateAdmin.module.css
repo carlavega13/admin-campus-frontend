@@ -1,0 +1,69 @@
+.container {
+  /* background: lightblue; */
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+.container > div {
+  /* background: red; */
+  display: flex;
+  flex-direction: column;
+  /* padding: 3px; */
+  margin-top: 10px;
+  width: 100%;
+}
+.container > div > label {
+  /* background: greenyellow; */
+  font-weight: bold;
+  letter-spacing: 1px;
+  padding-left: 10px;
+  padding-bottom: 5px;
+}
+.container > div > input {
+  /* background: goldenrod; */
+  border-radius: 1rem;
+  padding: 0 10px 0 10px;
+  letter-spacing: 1px;
+  border: 2px solid #9283bd;
+}
+.btnCreate {
+  background: #9283bd;
+  height: auto;
+  border-radius: 4px;
+  border: none;
+  font-weight: bold;
+  font-size: 0.85rem;
+  color: #fff;
+  letter-spacing: 0.1rem;
+  transition: 0.3s;
+  width: auto;
+  padding: 4px 16px 4px 16px;
+  cursor: pointer;
+  margin-top: 10px;
+  width: 14.5rem;
+}
+
+.btnCreate:hover {
+  background: #59b4b4;
+}
+.close{
+  background: transparent;
+  border: 1px solid #2525256b;
+  border-radius: 3px;
+  color: #252525;
+  font-weight: bold;
+  cursor: pointer;
+  font-family: Montserrat;
+  letter-spacing: .075rem;
+width: fit-content;
+transition: 0.5s;
+}
+.close:hover{
+  background: #e23f3f;
+  color: #000;
+}
+.closeBox{
+display: flex;
+align-items: end;
+
+}

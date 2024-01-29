@@ -1,0 +1,61 @@
+.divUserName {
+  letter-spacing: 1px;
+  font-family: Montserrat;
+  font-weight: bold;
+  color: #555;
+  padding: 4px 0 4px 4px;
+  width: 12rem;
+}
+.containerUserNames {
+  width: 13rem;
+  height: 16rem;
+  overflow: auto;
+  position: absolute;
+}
+
+.divInputIcons {
+  display: flex;
+  align-items: center;
+  margin-bottom: 0.4rem;
+}
+.divInputIcons > input {
+  margin-right: 1rem;
+  height: 1.5rem;
+  width: 11.3rem;
+  letter-spacing: 0.075rem;
+  padding: 0 .3rem 0 .3rem;
+}
+.divInputIcons>div {
+  display: flex;
+  width: 4.4rem;
+  justify-content: flex-end;
+}
+
+.icons {
+  background: #9283bd;
+  margin: 0 0 0 10px;
+  width: 1.3rem;
+  height: 1.3rem;
+  border-radius: 1rem;
+  padding: 4px;
+  color: #eee;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: 0.3s;
+}
+.icons:hover {
+  background: #59b4b4;
+}
+.noUsersFound {
+  background: #fff;
+  border: .075rem solid rgb(223, 53, 53);
+  border-radius: 1rem;
+  padding: .2rem .2rem .2rem .5rem;
+  cursor: default;
+  color: rgb(223, 53, 53);
+  font-weight: bold;
+  font-size: .85rem;
+  letter-spacing: .05rem;
+}

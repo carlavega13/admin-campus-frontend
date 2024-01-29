@@ -1,31 +1,45 @@
-.box{
-display: flex;
-flex-direction: column;
+.containerLoading {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  padding-top: 1rem;
+}
+.loadingIcon {
+  width: 8rem;
+  height: 8rem;
+  align-self: center;
+  padding: 3rem 0 0 0;
+}
+.box {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: fit-content;
+  border: solid .1rem #9283bd;
+  padding: .5rem;
+  border-radius: .2rem;
+}
+.btn {
+  background: #9283bd;
+  width: fit-content;
+  color: #fff;
+  padding: 4px 16px 4px 16px;
+  border-radius: 4px;
+  border: none;
+  font-weight: bold;
+  font-size: 1rem;
+  letter-spacing: 1px;
+  cursor: pointer;
+  transition: 0.3s;
+  margin: 0.5rem 0 0.5rem 0rem;
+  font-family: Montserrat;
+}
+.btn:hover {
+  background: #59b4b4;
+}
+.dataGridContainer {
+  width: 95vw;
+  overflow: auto;
+  font-family: Montserrat;
 
-}
-.cell{
-    display: flex;
-    flex-direction: row;
-    justify-content:space-around;
-
-}
-.name{
-    border: 1px solid rgb(135, 236, 135);
-    background-color: rgba(145, 131, 245, 0.581);
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    padding: 1em;
-}
-.names{
-    display: flex;
-    justify-content: space-around;
-}
-.blur{
-    color: transparent;
-    text-shadow: 0 0 5px rgba(0, 0, 0, 0.752); 
-}
-.normal{
-    border: 1px solid rgb(63, 89, 84);  
-    padding: 1em;
 }

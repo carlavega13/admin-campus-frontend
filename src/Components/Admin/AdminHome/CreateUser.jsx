@@ -34,6 +34,7 @@ const handleCreate=async()=>{
         }
         if(confirm(`Estas seguro que quieres crear el usuario: ${info?.firstname} ${info?.lastname}`)){
             const res=await axios.post(`${HOST}postUserMoodle`,{username,domain,info})
+            console.log(res.data);
             if(res.data[0].id){
                 dispatch(getAllUsers({domain,token}))
                 setInfo({

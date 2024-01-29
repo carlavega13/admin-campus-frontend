@@ -1,0 +1,82 @@
+label {
+  font-weight: bold;
+  font-family: Montserrat;
+}
+.containerLoading {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  height: 100%;
+  padding-top: 2rem;
+}
+.loadingIcon {
+  width: 8rem;
+  height: 8rem;
+}
+
+/*! LOADING ARRIBA ↑↑↑ */
+
+.container {
+  /* background: green; */
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  padding-top: 3rem;
+}
+ .container > div { /*! CARD CONTAINER */
+  background: #fff;
+  background: #9283bd;
+  margin: 0 0 .5rem .5rem;
+  width: 22rem;
+  height: 12rem;
+  border-radius: .2rem;
+  padding:  0 .2rem .2rem .2rem;
+}
+.container>div>div {
+  background: #fff;
+  display: flex;
+  align-items: center;
+  padding: 0 1rem 0 .5rem;
+}
+.container > div > div > label {
+  /* background: #59b4b4; */
+  width: 6.5rem;
+  font-size: .85rem;
+
+}
+.container > div > div > p {
+  /* background: orange; */
+  font-size: .85rem;
+
+}
+.courseName {
+  background: #9283bd !important;
+  border-radius: .2rem .2rem 0 0;
+  padding: 0;
+}
+.courseName > p {
+  color: #fff;
+  /* background: red; */
+  height: 2rem;
+  width: 100%;
+  word-wrap: break-word;
+}
+.btn {
+  background: #9283bd;
+  width: fit-content;
+  color: #fff;
+  padding: .2rem .8rem .2rem .8rem;
+  border-radius: 4px;
+  border: none;
+  font-weight: bold;
+  font-size: .85rem;
+  letter-spacing: .1rem;
+  cursor: pointer;
+  transition: 0.3s;
+  margin: 0.5rem 0 0.5rem 0rem;
+  font-family: Montserrat;
+}
+.btn:hover {
+  background: #59b4b4;
+}

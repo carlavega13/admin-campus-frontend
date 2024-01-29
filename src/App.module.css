@@ -1,4 +1,5 @@
-.box{
-    display: flex;
-    min-height: 100vh;
+.box {
+  display: flex;
+  min-height: 100vh;
+  font-family: Monserrat;
 }

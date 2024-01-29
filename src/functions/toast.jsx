@@ -1,8 +1,7 @@
-import { useEffect, useState } from "react";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-const Sheet=()=>{
-    const notify = (msg)=> toast(`${msg}`, {
+export const notify = (text) => {
+  return toast(`${text}`, {
     position: "bottom-center",
     autoClose: 5000,
     hideProgressBar: false,
@@ -10,34 +9,38 @@ const Sheet=()=>{
     pauseOnHover: true,
     draggable: true,
     progress: undefined,
-    theme: "dark",
-    });
-return (
+    theme: "light",
+  });
+};
+export const notifyError = (text) => {
+  return toast.error(`${text}`, {
+    position: "bottom-center",
+    autoClose: 5000,
+    hideProgressBar: false,
+    closeOnClick: true,
+    pauseOnHover: true,
+    draggable: true,
+    progress: undefined,
+    theme: "light",
+  });
+};
+export const ToastInfo = () => {
+  return (
     <div>
-        <button onClick={()=>notify("esto es una notificación")}>click</button>
-        <div>
-              <ToastContainer
-position="bottom-center"
-autoClose={5000}
-hideProgressBar={false}
-newestOnTop
-closeOnClick
-rtl={false}
-pauseOnFocusLoss
-draggable
-pauseOnHover
-theme="dark"
-/>
-        </div>
-       
+      <ToastContainer
+        position="bottom-center"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="light"
+      />
     </div>
-)
-
-}
-export default Sheet
-
-
-     
-
-
-
+  );
+};
+// #9283bd
+// #59b4b4

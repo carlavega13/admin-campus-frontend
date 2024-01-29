@@ -1,0 +1,164 @@
+p {
+  font-family: Montserrat;
+  letter-spacing: .075rem;
+  font-weight: bold;
+  color: #868aa5;
+  transition: 0.3s;
+}
+.userName {
+  /* background: red; */
+  width: 9rem;
+  word-wrap: break-word;
+}
+.containerAll {
+  width: 100%;
+  display: flex;
+  /* background: green; */
+}
+
+.container {
+  /* background: #d7d7d8; */
+  background: linear-gradient(180deg, #d7d7d8 85%, #fff 100%);
+  padding: .6rem;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  top: -.4rem;
+  left: -.4rem;
+  width: 12rem;
+  height: 100%;
+}
+
+.settings {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  /* background: red; */
+  align-items: flex-start;
+
+}
+
+.iconSettings {
+  width: 2rem;
+  height: 2rem;
+  border-radius: .3rem;
+  border: .15rem solid#868AA5;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.iconSettings:hover {
+  /* background: #e9e9e9; */
+  background: linear-gradient(to right, #e9e9e9 30%, #e9e9e9 100%) padding-box,
+    linear-gradient(to right, #59b4b4 20%, #9283bd 70%) border-box;
+}
+
+.selectedProfile {
+  border-radius: 8px;
+  border: 3px solid transparent;
+  box-shadow: 2px 2px 3px 1px #b3b3b3;
+  background: linear-gradient(to right, #d7d7d8 30%, #d7d7d8 100%) padding-box,
+    linear-gradient(to right, #59b4b4 20%, #9283bd 70%) border-box;
+}
+
+.divBtnsOptions {
+  display: flex;
+  flex-direction: column;
+}
+
+.divBtnsOptions div {
+  border-radius: 8px;
+  height: 3rem;
+  display: flex;
+  padding: 0 8px 0 8px;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 10px;
+  font-size: 0.75rem;
+  font-family: Helvetica Narrow, sans-serif;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.divBtnsOptions div:hover {
+  background: linear-gradient(to right, #e9e9e9 30%, #e9e9e9 100%) padding-box,
+    linear-gradient(to right, #59b4b4 20%, #9283bd 70%) border-box;
+}
+
+.icons {
+  width: 1.5rem;
+  height: 1.5rem;
+  transition: 0.3s;
+}
+
+.icons2 {
+  width: 1.2rem;
+  height: 1.2rem;
+  transition: 0.3s;
+}
+.iconOptions {
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
+.pUrl {
+  transition: 0.3s;
+  display: flex;
+  text-align: center;
+  overflow-wrap: break-word;
+  width: 7rem;
+}
+
+.right {
+  width: 90%;
+}
+
+.selected {
+  background: linear-gradient(to right, #59b4b4, #9283bd);
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+.pButtons {
+  background: linear-gradient(to right, #59b4b4, #9283bd);
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+.borderDefault {
+  border-radius: 8px;
+  border: 3px solid #d7d7d8;
+}
+
+.borderGr {
+  border-radius: 8px;
+  border: 3px solid transparent;
+  background: linear-gradient(to right, #d7d7d8 30%, #d7d7d8 100%) padding-box,
+    linear-gradient(to right, #59b4b4 20%, #9283bd 70%) border-box;
+  box-shadow: 2px 2px 3px 1px #b3b3b3;
+}
+
+@media (max-width: 1080px) {
+  .containerAll {
+    flex-direction: column;
+  }
+
+  .container {
+    width: 100%;
+  }
+
+  .divBtnsOptions {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+
+  .divBtnsOptions div {
+    width: 12rem;
+    margin-right: 12px;
+    border: 1.5px solid #59b4b4;
+  }
+
+  .right {
+    width: 100%;
+  }
+}

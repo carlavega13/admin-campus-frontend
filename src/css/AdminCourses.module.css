@@ -1,69 +1,85 @@
 .container {
-    /* background: #333; */
+  border: solid 0.1rem #9283bd;
+  padding: .5rem;
+  border-radius: .2rem;
+  margin: 0 0 1rem 0
 }
-.row{
-    display: flex;
- justify-content: space-around;    
- /* background-color: brown; */
- padding: 1em;
- border: 1px solid black;
- 
+.row {
+  display: flex;
+  justify-content: space-around;
+  background-color: violet;
 }
-.name{
-    cursor: pointer;
-
+.name {
+  cursor: pointer;
 }
-.box{
-    background-color: aqua;
-    width: 70%;
-
-
+.box {
+  background-color: aqua;
+  width: 70%;
 }
-.fondo{
-    width: 100%;
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
+.fondo {
+  background: green;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 4px;
 }
-.names{
-    display: flex;
-    justify-content: space-evenly;
-
-    width: 100%;
+.names {
+  background: blue;
+  display: flex;
+  justify-content: space-evenly;
+  width: 100%;
 }
-.blur{
-    color: transparent; /* Hace que el texto sea transparente */
-    text-shadow: 0 0 5px rgba(0, 0, 0, 0.752); 
+.blur {
+  color: transparent;/* Hace que el texto sea transparente */
+  text-shadow: 0 0 5px rgba(0, 0, 0, 0.752);
+}
+.btnCreate {
+  background: #9283bd;
+  /* max-width: 28rem; */
+  width: 10rem;
+  color: #fff;
+  padding: 4px 16px 4px 16px;
+  border-radius: 4px;
+  border: none;
+  font-weight: bold;
+  font-size: .9rem;
+  letter-spacing: 0.075rem;
+  cursor: pointer;
+  transition: 0.3s;
+  margin: .5rem 0 1rem 0;
+}
+.btnCreate:hover {
+  background: #59b4b4;
 }
 .btnEmails {
-    background: #2f3367;
-    height: auto;
-    max-width: 28rem;
-    color: #fff;
-    padding: 4px 16px 4px 16px;
-    margin-top: 12px;
-    border-radius: 4px;
-    border: none;
-    font-weight: bold;
-    font-size: .85rem;
-    letter-spacing: 2px;
-    cursor: pointer;
-    transition: .3s;
+  background: #9283bd;
+  height: auto;
+  border-radius: 4px;
+  border: none;
+  font-weight: bold;
+  font-size: 0.85rem;
+  color: #fff;
+  letter-spacing: 0.1rem;
+  transition: 0.3s;
+  width: fit-content;
+  padding: .2rem .8rem .2rem .8rem;
+  margin: 0.5rem 0 1rem 0;
+  cursor: pointer;
 }
 .btnEmails:hover {
-    background: #535AAC;
+  background: #59b4b4;
 }
 .divLoading {
-    width: 100%;
-    /* background-color: red; */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
 }
 .loading {
-    width: 7rem;
-    height: 7rem;
+  width: 7rem;
+  height: 7rem;
 }
